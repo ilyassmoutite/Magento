@@ -11,7 +11,7 @@ node {
         	checkout scm
         }
         stage ('Install') {
-        	sh "composer install --ignore-platform-reqs"
+        	echo "composer install skipped"
         }
         stage ('Tests') {
             sh "echo 'shell scripts to create DB and settings for integration tests'"
