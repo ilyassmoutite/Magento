@@ -29,13 +29,13 @@ cd ${BUILD}
 #composer install --no-dev --prefer-dist --optimize-autoloader --ignore-platform-reqs
 
 # GENERATE FILES
-cd ${BUILD}/${MAGENTO_DIR}
-if [[ -n ${DISABLE_MODULES} ]]; then
-    bin/magento module:disable ${DISABLE_MODULES}
-fi
-bin/magento setup:di:compile
-bin/magento setup:static-content:deploy -f ${LANGUAGES} ${STATIC_DEPLOY_PARAMS}
-find var vendor pub/static pub/media app/etc -type f -exec chmod g+w {} \; && find var vendor pub/static pub/media app/etc -type d -exec chmod g+w {} \;
+#cd ${BUILD}/${MAGENTO_DIR}
+#if [[ -n ${DISABLE_MODULES} ]]; then
+#    bin/magento module:disable ${DISABLE_MODULES}
+#fi
+#bin/magento setup:di:compile
+#bin/magento setup:static-content:deploy -f ${LANGUAGES} ${STATIC_DEPLOY_PARAMS}
+find var media app/etc -type d -exec chmod 777 {} \;
 
 # CREATE ARTIFACT
 cd ${BUILD}
