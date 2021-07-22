@@ -16,7 +16,7 @@ set -eux
 # ============================
 WORKING_DIR=`pwd`
 source ${WORKING_DIR}/config/properties.sh
-ARTIFACT_EXCLUDES=${WORKING_DIR}/config/artifact.excludes
+#ARTIFACT_EXCLUDES=${WORKING_DIR}/config/artifact.excludes
 
 
 MAGENTO_DIR='magento'
@@ -29,17 +29,18 @@ cd ${BUILD}
 #composer install --no-dev --prefer-dist --optimize-autoloader --ignore-platform-reqs
 
 # GENERATE FILES
-cd ${BUILD}/${MAGENTO_DIR}
-if [[ -n ${DISABLE_MODULES} ]]; then
-    bin/magento module:disable ${DISABLE_MODULES}
-fi
-bin/magento setup:di:compile
-bin/magento setup:static-content:deploy -f ${LANGUAGES} ${STATIC_DEPLOY_PARAMS}
-find var vendor pub/static pub/media app/etc -type f -exec chmod g+w {} \; && find var vendor pub/static pub/media app/etc -type d -exec chmod g+w {} \;
+#cd ${BUILD}/${MAGENTO_DIR}
+#if [[ -n ${DISABLE_MODULES} ]]; then
+#    bin/magento module:disable ${DISABLE_MODULES}
+#fi
+#bin/magento setup:di:compile
+#bin/magento setup:static-content:deploy -f ${LANGUAGES} ${STATIC_DEPLOY_PARAMS}
+find var media app/etc -type d -exec chmod 777 {} \;
 
 # CREATE ARTIFACT
 cd ${BUILD}
-tar --exclude-from=${ARTIFACT_EXCLUDES} -czf ${ARTIFACT_FILENAME} .
+tar  -czf ${ARTIFACT_FILENAME} .
 
 # RETURN TO WORKING DIR
 cd ${WORKING_DIR}
+
