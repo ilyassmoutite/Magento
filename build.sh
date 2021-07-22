@@ -39,7 +39,7 @@ find var media app/etc -type d -exec chmod 777 {} \;
 
 # CREATE ARTIFACT
 cd ${BUILD}
-tar --exclude-from=${ARTIFACT_EXCLUDES} -czf ${ARTIFACT_FILENAME} .
+tar  -czf ${ARTIFACT_FILENAME} .
 
 # RETURN TO WORKING DIR
 cd ${WORKING_DIR}
