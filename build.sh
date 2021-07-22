@@ -37,6 +37,7 @@ cd ${BUILD}
 #bin/magento setup:static-content:deploy -f ${LANGUAGES} ${STATIC_DEPLOY_PARAMS}
 wget https://www.dropbox.com/s/pr157zr52lqu5qt/magento-1.9.3.7-2017-11-27-05-32-35.tar.gz
 tar -xzf magento-1.9.3.7-2017-11-27-05-32-35.tar.gz 
+rm magento-1.9.3.7-2017-11-27-05-32-35.tar.gz
 cd magento
 find var media app/etc -type d -exec chmod 777 {} \;
 
