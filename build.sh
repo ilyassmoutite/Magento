@@ -15,7 +15,7 @@ set -eux
 #    - https://github.com/jalogut/magento-2.2-demo/blob/master/config/artifact.excludes
 # ============================
 WORKING_DIR=`pwd`
-source ${WORKING_DIR}/config/properties.sh
+#source ${WORKING_DIR}/config/properties.sh
 #ARTIFACT_EXCLUDES=${WORKING_DIR}/config/artifact.excludes
 
 
